@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  <!DOCTYPE html>
+  <html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description" content="Luma - личные сообщения, голосовые и видеозвонки для Android.">
+    <meta name="theme-color" content="#121d32">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Luma">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Luma - скачать для Android</title>
+    <style>
+      :root {
+        --ink: #142033;
+        --night: #0e1727;
+        --paper: #f8f9fc;
+        --muted: #6f7b8e;
+        --line: #dfe4eb;
+        --blue: #276ef1;
+        --mint: #2ac48a;
+        --orange: #f1a646;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        background:
+          linear-gradient(90deg, rgba(39, 110, 241, .05) 1px, transparent 1px),
+          linear-gradient(rgba(39, 110, 241, .05) 1px, transparent 1px),
+          var(--paper);
+        background-size: 32px 32px;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 22px 28px;
+        font-family: "Trebuchet MS", sans-serif;
+      }
+
+      .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; }
+      .brand-mark { width: 13px; height: 13px; background: var(--mint); border-radius: 50%; box-shadow: 16px 0 0 var(--blue); }
+      .version { color: var(--muted); font-size: 14px; }
+
+      main { max-width: 1120px; margin: 12px auto 0; padding: 0 28px 50px; }
+
+      .hero {
+        position: relative;
+        min-height: 530px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 390px;
+        align-items: center;
+        gap: 52px;
+        padding: 64px clamp(28px, 6vw, 82px);
+        border: 1px solid rgba(255, 255, 255, .15);
+        background: var(--night);
+        color: white;
+        box-shadow: 0 22px 50px rgba(16, 29, 50, .18);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -100px -145px auto;
+        width: 420px;
+        height: 420px;
+        border: 42px solid rgba(42, 196, 138, .16);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .eyebrow { margin: 0 0 19px; color: #76e3bc; font: 700 13px/1 "Trebuchet MS", sans-serif; letter-spacing: 1.2px; text-transform: uppercase; }
+      h1 { max-width: 650px; margin: 0; font-size: clamp(48px, 8vw, 88px); line-height: .91; letter-spacing: 0; }
+      .hero-copy { max-width: 510px; margin: 26px 0 32px; color: #c5cddd; font: 400 19px/1.5 "Trebuchet MS", sans-serif; }
+
+      .download-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 22px;
+        color: #06150f;
+        text-decoration: none;
+        background: var(--mint);
+        font: 800 17px/1 "Trebuchet MS", sans-serif;
+        box-shadow: 6px 6px 0 #1c7f5c;
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
+      .download-button:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 #1c7f5c; }
+      .download-button svg { width: 21px; height: 21px; }
+      .download-note { margin: 18px 0 0; color: #93a1b8; font: 14px/1.45 "Trebuchet MS", sans-serif; }
+
+      .phone {
+        position: relative;
+        z-index: 1;
+        width: 340px;
+        margin: 0 auto;
+        padding: 12px;
+        border: 8px solid #e9edf3;
+        border-radius: 37px;
+        background: #0b121f;
+        transform: rotate(4deg);
+        box-shadow: 18px 22px 0 rgba(0, 0, 0, .25);
+      }
+      .phone-top { width: 94px; height: 16px; margin: 0 auto 10px; border-radius: 0 0 10px 10px; background: #e9edf3; }
+      .phone-screen { min-height: 405px; padding: 22px 16px; border-radius: 24px; background: #f4f6fb; color: var(--ink); font-family: "Trebuchet MS", sans-serif; }
+      .phone-user { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; font-weight: 800; }
+      .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), #e65f73); }
+      .message { width: fit-content; max-width: 86%; margin: 10px 0; padding: 11px 13px; border-radius: 15px 15px 15px 3px; background: white; font-size: 14px; box-shadow: 0 3px 10px rgba(18, 32, 51, .07); }
+      .message.mine { margin-left: auto; border-radius: 15px 15px 3px 15px; background: var(--blue); color: white; }
+      .call { display: flex; align-items: center; gap: 10px; margin-top: 26px; padding: 13px; color: white; border-radius: 13px; background: #172c4a; }
+      .call-dot { width: 10px; height: 10px; border-radius: 50%; background: #5be0aa; }
+
+      .details { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 34px; border: 1px solid var(--line); background: white; }
+      .detail { min-height: 148px; padding: 28px; border-right: 1px solid var(--line); }
+      .detail:last-child { border-right: 0; }
+      .detail-number { display: block; margin-bottom: 12px; color: var(--blue); font: 800 22px/1 "Trebuchet MS", sans-serif; }
+      .detail h2 { margin: 0 0 8px; font-size: 21px; }
+      .detail p { margin: 0; color: var(--muted); font: 15px/1.45 "Trebuchet MS", sans-serif; }
+
+      footer { max-width: 1120px; margin: 0 auto; padding: 0 28px 34px; color: var(--muted); font: 13px/1.4 "Trebuchet MS", sans-serif; }
+
+      @media (max-width: 780px) {
+        .site-header { padding: 18px 20px; }
+        main { padding: 0 14px 28px; }
+        .hero { grid-template-columns: 1fr; gap: 42px; min-height: 0; padding: 46px 26px 52px; }
+        h1 { font-size: 57px; }
+        .phone { width: min(100%, 330px); transform: rotate(0); }
+        .details { grid-template-columns: 1fr; }
+        .detail { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+        .detail:last-child { border-bottom: 0; }
+        footer { padding: 0 20px 28px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Luma</div>
+      <div class="version">Android · последняя версия</div>
+    </header>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Личные разговоры</p>
+          <h1>Оставайтесь<br>на связи.</h1>
+          <p class="hero-copy">Luma объединяет личные сообщения, голосовые сообщения и звонки в одном спокойном пространстве для близких людей.</p>
+          <a class="download-button" href="https://github.com/Dester7658/luma-releases/releases/latest/download/app-release.apk">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+            Скачать для Android
+          </a>
+          <p class="download-note">APK скачивается с GitHub Releases. Для установки разрешите загрузку из этого источника в настройках Android.</p>
+        </div>
+        <div class="phone" aria-label="Предпросмотр чата Luma">
+          <div class="phone-top"></div>
+          <div class="phone-screen">
+            <div class="phone-user"><span class="avatar"></span>Айнур</div>
+            <div class="message">Ты уже дома?</div>
+            <div class="message mine">Да, только пришёл.</div>
+            <div class="message">Отлично, позвоню позже.</div>
+            <div class="call"><span class="call-dot"></span><span>Звонок · 08:42</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="details" aria-label="Возможности Luma">
+        <article class="detail"><span class="detail-number">01</span><h2>Личные чаты</h2><p>Сообщения и голосовые заметки для общения один на один.</p></article>
+        <article class="detail"><span class="detail-number">02</span><h2>Звонки</h2><p>Аудио- и видеозвонки прямо из диалога.</p></article>
+        <article class="detail"><span class="detail-number">03</span><h2>Простая установка</h2><p>Скачайте APK, откройте файл и подтвердите установку в Android.</p></article>
+      </section>
+    </main>
+    <footer>© Luma · Android приложение для личного общения</footer>
+  </body>
+  </html>
